@@ -2,28 +2,28 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f5f7fa;
+    background: #f4f6f9;
     color: #333;
 }
 
 /* HEADER */
 .header {
-    background: #ff4d4d;
+    background: #0078ff;
     color: white;
-    padding: 20px;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .header .logo {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: bold;
 }
 
 nav a {
     color: white;
-    margin-left: 20px;
+    margin-left: 25px;
     text-decoration: none;
     font-weight: 600;
 }
@@ -34,25 +34,36 @@ nav a:hover {
 
 /* HERO */
 .hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #ff4d4d, #ff944d);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #0078ff, #00c6ff);
     color: white;
 }
 
-.hero h1 {
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h1 {
     font-size: 3rem;
     margin-bottom: 10px;
 }
 
-.hero p {
+.hero-text p {
     font-size: 1.2rem;
     margin-bottom: 30px;
 }
 
+.hero-image img {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
 .button {
     background: white;
-    color: #ff4d4d;
+    color: #0078ff;
     padding: 14px 28px;
     border-radius: 30px;
     text-decoration: none;
@@ -61,71 +72,87 @@ nav a:hover {
 }
 
 .button:hover {
-    background: #ffe6e6;
+    background: #e6f2ff;
 }
 
-/* HIGHLIGHT SECTION */
-.highlight {
+/* SECTION TITLES */
+.section-title {
     text-align: center;
-    padding: 60px 20px;
-    background: white;
+    padding: 50px 20px 20px;
 }
 
-.highlight h2 {
+.section-title h2 {
     font-size: 2rem;
     margin-bottom: 10px;
 }
 
-/* FEATURES GRID */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    padding: 40px 20px;
-    max-width: 1100px;
-    margin: auto;
+/* WRAP GALLERY */
+.wrap-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 40px 60px;
 }
 
-.feature-card {
+.wrap-card {
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.feature-card h3 {
-    color: #ff4d4d;
+.wrap-card img {
+    width: 100%;
+    border-radius: 10px;
 }
 
-/* INDUSTRIES */
-.industries {
-    background: #fff;
-    padding: 60px 20px;
-    text-align: center;
+/* PLACEMENT GRID */
+.placement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 40px 60px;
 }
 
-.industries ul {
+.placement-grid img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* WHY RETAIL */
+.why-retail {
+    background: white;
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.why-retail ul {
     list-style: none;
     padding: 0;
-    font-size: 1.2rem;
 }
 
-.industries li {
-    margin: 10px 0;
+.why-retail li {
+    margin: 12px 0;
+    font-size: 1.1rem;
 }
 
 /* CTA */
 .cta {
     text-align: center;
     padding: 80px 20px;
-    background: #ff4d4d;
+    background: #0078ff;
     color: white;
 }
 
 .cta .button {
     background: white;
-    color: #ff4d4d;
+    color: #0078ff;
 }
 
 /* FOOTER */
