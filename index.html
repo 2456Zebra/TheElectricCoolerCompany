@@ -4,145 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Electric Cooler Company – Ice-Free. Brand-Forward. Always Cool.</title>
-  <meta name="description" content="LED-lit electric barrel coolers — no ice, no mess, maximum brand visibility for retail & events."/>
-  
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #0a2540;
-      --accent: #00d4ff;
-      --glow: #39ff14;
-      --light: #f8f9fa;
-      --gray: #e9ecef;
-      --dark: #212529;
-    }
-
-    * { margin:0; padding:0; box-sizing:border-box; }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
-      background: var(--light);
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .btn-primary { background: var(--accent); color: var(--primary); }
-    .btn-primary:hover { background: #00b8e0; transform: translateY(-3px); }
-
-    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
-    .btn-outline:hover { background: var(--primary); color: white; }
-
-    header {
-      background: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 1.2rem 0;
-    }
-
-    .header-inner { display: flex; justify-content: space-between; align-items: center; }
-
-    .logo { font-size: 1.9rem; font-weight: 800; color: var(--primary); }
-
-    nav ul { display: flex; gap: 2.5rem; list-style: none; }
-
-    nav a { color: var(--dark); text-decoration: none; font-weight: 500; }
-    nav a:hover { color: var(--accent); }
-
-    .hero {
-      min-height: 80vh;
-      background: linear-gradient(rgba(10,37,64,0.7), rgba(10,37,64,0.4)),
-                  url('https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=2340&q=80') center/cover;
-      color: white;
-      display: flex;
-      align-items: center;
-      text-align: center;
-    }
-
-    .hero-content { max-width: 900px; margin: 0 auto; }
-
-    .hero h1 { font-size: 4.5rem; margin-bottom: 1.5rem; }
-
-    .hero .accent { color: var(--accent); text-shadow: 0 0 30px rgba(0,212,255,0.6); }
-
-    .hero p { font-size: 1.4rem; max-width: 700px; margin: 0 auto 2.5rem; }
-
-    .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-
-    .section-title { text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: var(--primary); }
-
-    .product-grid, .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
-    }
-
-    .product-card:hover { transform: translateY(-10px); }
-
-    .product-card img { width: 100%; height: 340px; object-fit: cover; }
-
-    .product-info { padding: 1.8rem; text-align: center; }
-
-    .gallery-grid { margin-top: 4rem; }
-
-    .gallery-item img { border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-
-    .gallery-item p { margin-top: 1rem; font-weight: 500; color: var(--primary); }
-
-    .cta {
-      padding: 8rem 0;
-      background: var(--primary);
-      color: white;
-      text-align: center;
-    }
-
-    footer {
-      background: #0a0f1c;
-      color: #a5b4fc;
-      padding: 4rem 0 2rem;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 3.2rem; }
-      nav ul { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-      .header-inner { flex-direction: column; gap: 1rem; }
-    }
-  </style>
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <header>
-    <div class="container header-inner">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
       <div class="logo">The Electric Cooler Co.</div>
       <nav>
         <ul>
@@ -155,74 +31,113 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero" id="home">
-    <div class="container hero-content">
-      <h1>Ice the Old Way.<br><span class="accent">Electrify Your Brand.</span></h1>
-      <p>LED-lit electric barrel coolers — no ice, no mess, maximum brand visibility.</p>
-      <div class="hero-buttons">
-        <a href="#products" class="btn btn-primary">View Coolers</a>
-        <a href="#cta" class="btn btn-outline">Request Pricing</a>
+    <div class="hero-inner container">
+
+      <div class="hero-copy">
+        <div class="hero-tag">Ice‑Free • Brand‑Forward • Always Cool</div>
+
+        <h1>
+          Electrify the<br>
+          <span class="accent">Cooler in the Aisle.</span>
+        </h1>
+
+        <p class="lead">
+          LED‑lit electric barrel coolers that turn grocery, deli, and grab‑and‑go
+          into a glowing billboard for your brand.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#products" class="btn btn-primary">View Coolers</a>
+          <a href="#cta" class="btn btn-outline">Request Pricing</a>
+        </div>
       </div>
+
+      <div class="hero-visual">
+        <div class="hero-blob"></div>
+
+        <div class="hero-photo">
+          <!-- Replace this with your cooler rendering once uploads work -->
+          <img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=1200&q=80"
+               alt="Cooler in grocery store">
+        </div>
+
+        <div class="hero-chip">
+          36″ Signature Barrel • LED Base • Custom Wrap
+        </div>
+      </div>
+
     </div>
   </section>
 
+  <!-- PRODUCTS -->
   <section class="products" id="products">
     <div class="container">
-      <h2 class="section-title">Our Electric Barrel Coolers</h2>
+      <h2>Our Electric Barrel Coolers</h2>
+
       <div class="product-grid">
+
         <div class="product-card">
-          <img src="assets/evergreen-cooler.jpg" alt="Electric barrel cooler with Evergreen Farms branding in grocery store">
-          <div class="product-info">
-            <h3>36″ Signature Barrel</h3>
-            <p>Shown in dairy section with artisanal yogurt display — full LED glow base.</p>
-            <a href="#cta" class="btn btn-outline">Get Quote</a>
-          </div>
+          <img src="assets/evergreen-cooler.jpg" alt="Evergreen Farms cooler">
+          <h3>36″ Signature Barrel</h3>
+          <p>Shown in dairy with artisanal yogurt display. Full LED glow base and 360° wrap.</p>
+          <a href="#cta" class="btn btn-outline">Get Quote</a>
         </div>
 
         <div class="product-card">
-          <img src="assets/sunrise-cooler.jpg" alt="Electric barrel cooler with Sunrise Dairy branding in store">
-          <div class="product-info">
-            <h3>36″ Signature Barrel</h3>
-            <p>Fresh & fruity yogurt promotion — bright LED lighting draws attention.</p>
-            <a href="#cta" class="btn btn-outline">Get Quote</a>
-          </div>
+          <img src="assets/sunrise-cooler.jpg" alt="Sunrise Dairy cooler">
+          <h3>36″ Signature Barrel</h3>
+          <p>Fresh & fruity yogurt promotion. Bright LED lighting pulls shoppers in.</p>
+          <a href="#cta" class="btn btn-outline">Get Quote</a>
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- GALLERY -->
   <section class="gallery" id="gallery">
     <div class="container">
-      <h2 class="section-title">Real Store & Deli Placements</h2>
+      <h2>Real Store & Deli Placements</h2>
+
       <div class="gallery-grid">
-        <div class="gallery-item">
+        <div>
           <img src="assets/evergreen-cooler.jpg" alt="Evergreen Farms cooler in dairy aisle">
-          <p>Evergreen Farms Dairy Delights – Artisanal Display</p>
         </div>
-        <div class="gallery-item">
+        <div>
           <img src="assets/sunrise-cooler.jpg" alt="Sunrise Dairy cooler in grocery setting">
-          <p>Sunrise Dairy – Fresh & Fruity Yogurt Promotion</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="cta" id="cta">
+  <!-- CTA -->
+  <section class="contact" id="cta">
     <div class="container">
       <h2>Ready to Cool Smarter?</h2>
-      <p>Contact us for pricing, custom graphics, or to discuss your next rollout.</p>
-      <a href="mailto:hello@electriccooler.co" class="btn btn-primary" style="font-size:1.3rem; margin-top:2rem;">
+      <p class="about-text">
+        Contact us for pricing, custom graphics, or to discuss your next rollout.
+      </p>
+
+      <a href="mailto:hello@electriccooler.co" class="btn btn-primary" style="font-size:1.2rem;">
         hello@electriccooler.co
       </a>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <div class="logo">The Electric Cooler Co.</div>
-      <p>Ice-Free. Brand-Forward. Always Cool.</p>
-      <p class="copyright">© 2026 The Electric Cooler Company • Nothing But Good.</p>
+    <div class="container footer-content">
+      <div>
+        <div class="footer-logo">The Electric Cooler Co.</div>
+        <p>Ice-Free. Brand-Forward. Always Cool.</p>
+      </div>
     </div>
+
+    <p class="copyright">
+      © 2026 The Electric Cooler Company • Nothing But Good.
+    </p>
   </footer>
 
 </body>
