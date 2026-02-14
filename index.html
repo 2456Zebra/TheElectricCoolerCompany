@@ -21,14 +21,10 @@
       --dark: #212529;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.6;
       color: var(--dark);
       background: var(--light);
@@ -54,32 +50,14 @@
       text-decoration: none;
       transition: all 0.3s ease;
       cursor: pointer;
-      border: none;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: var(--primary);
-    }
+    .btn-primary { background: var(--accent); color: var(--primary); }
+    .btn-primary:hover { background: #00b8e0; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,212,255,0.3); }
 
-    .btn-primary:hover {
-      background: #00b8e0;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,212,255,0.3);
-    }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* Header */
     header {
       background: white;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -99,7 +77,6 @@
       font-size: 1.9rem;
       font-weight: 800;
       color: var(--primary);
-      letter-spacing: -0.5px;
     }
 
     nav ul {
@@ -112,14 +89,10 @@
       color: var(--dark);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: var(--accent);
-    }
+    nav a:hover { color: var(--accent); }
 
-    /* Hero */
     .hero {
       min-height: 90vh;
       background: linear-gradient(rgba(10,37,64,0.78), rgba(10,37,64,0.45)),
@@ -130,39 +103,21 @@
       text-align: center;
     }
 
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .hero-content { max-width: 900px; margin: 0 auto; }
 
-    .hero h1 {
-      font-size: 4.8rem;
-      margin-bottom: 1.5rem;
-    }
+    .hero h1 { font-size: 4.8rem; margin-bottom: 1.5rem; }
 
     .hero .accent {
       color: var(--accent);
       text-shadow: 0 0 40px rgba(0,212,255,0.7);
     }
 
-    .hero p {
-      font-size: 1.5rem;
-      max-width: 720px;
-      margin: 0 auto 2.5rem;
-      opacity: 0.95;
-    }
+    .hero p { font-size: 1.5rem; max-width: 720px; margin: 0 auto 2.5rem; opacity: 0.95; }
 
-    .hero-buttons {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
 
-    /* Features */
-    .features {
-      padding: 8rem 0 6rem;
-      background: white;
+    .features, .products, .gallery, .cta {
+      padding: 8rem 0;
     }
 
     .section-title {
@@ -172,107 +127,43 @@
       color: var(--primary);
     }
 
-    .feature-grid {
+    .feature-grid, .product-grid, .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2.5rem;
     }
 
-    .feature {
+    .feature, .product-card, .gallery-item {
       text-align: center;
-      padding: 2.5rem 1.5rem;
-      background: var(--gray);
-      border-radius: 16px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .feature:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    }
-
-    .feature .icon {
-      font-size: 3.8rem;
-      margin-bottom: 1.2rem;
-      color: var(--accent);
-    }
-
-    /* Products */
-    .products {
-      padding: 6rem 0;
-      background: var(--light);
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 3rem;
-    }
-
-    .product-card {
+      padding: 2rem;
       background: white;
       border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .product-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+    .feature:hover, .product-card:hover, .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
     }
 
-    .product-card img {
+    .product-card img, .gallery-item img {
       width: 100%;
       height: 340px;
       object-fit: cover;
+      border-radius: 12px 12px 0 0;
     }
 
-    .product-info {
-      padding: 2rem;
+    .product-info, .gallery-item p {
+      padding: 1.5rem;
     }
 
-    .product-info h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .product-info ul {
-      list-style: none;
-      margin: 1.2rem 0;
-    }
-
-    .product-info ul li {
-      margin-bottom: 0.7rem;
-      color: #444;
-    }
-
-    /* CTA / Contact */
     .cta {
-      padding: 8rem 0;
       background: var(--primary);
       color: white;
       text-align: center;
     }
 
-    .cta h2 {
-      font-size: 3.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta p {
-      font-size: 1.3rem;
-      max-width: 680px;
-      margin: 0 auto 3rem;
-      opacity: 0.9;
-    }
-
-    .cta .btn-primary {
-      font-size: 1.3rem;
-      padding: 1.2rem 3rem;
-    }
-
-    /* Footer */
     footer {
       background: #0a0f1c;
       color: #a5b4fc;
@@ -280,23 +171,11 @@
       text-align: center;
     }
 
-    footer .logo {
-      color: white;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+    .copyright { margin-top: 2rem; font-size: 0.95rem; opacity: 0.7; }
 
-    .copyright {
-      margin-top: 3rem;
-      font-size: 0.95rem;
-      opacity: 0.7;
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
       .hero h1 { font-size: 3.4rem; }
-      .hero p   { font-size: 1.3rem; }
-      nav ul    { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+      nav ul { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
       .header-inner { flex-direction: column; gap: 1rem; }
     }
   </style>
@@ -311,7 +190,7 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#products">Products</a></li>
-          <li><a href="#features">Why Electric?</a></li>
+          <li><a href="#gallery">In Stores</a></li>
           <li><a href="#cta" class="btn btn-outline">Get Quote</a></li>
         </ul>
       </nav>
@@ -330,66 +209,25 @@
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features" id="features">
-    <div class="container">
-      <h2 class="section-title">Why Choose Electric?</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <div class="icon">❄️</div>
-          <h3>No Ice Hassle</h3>
-          <p>Eliminate daily ice refills, water damage, and condensation forever.</p>
-        </div>
-        <div class="feature">
-          <div class="icon">💡</div>
-          <h3>Glowing LED Impact</h3>
-          <p>Bright, customizable base lighting turns your product into the center of attention.</p>
-        </div>
-        <div class="feature">
-          <div class="icon">🎯</div>
-          <h3>360° Brand Power</h3>
-          <p>Full-wrap graphics make every angle a billboard for your message.</p>
-        </div>
-        <div class="feature">
-          <div class="icon">⚡</div>
-          <h3>Energy Smart</h3>
-          <p>Low power consumption — cheaper to run than traditional ice barrels.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Products -->
   <section class="products" id="products">
     <div class="container">
-      <h2 class="section-title">Our Electric Coolers</h2>
+      <h2 class="section-title">Our Electric Barrel Coolers</h2>
       <div class="product-grid">
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="36-inch LED Electric Barrel Cooler">
+          <img src="assets/evergreen-farms-cooler.jpg" alt="Electric barrel cooler – Evergreen Farms Dairy Delights">
           <div class="product-info">
-            <h3>36″ Signature Model</h3>
-            <p>Perfect for retail aisles, end-caps, and promotions.</p>
-            <ul>
-              <li>Height: 36 inches</li>
-              <li>Capacity: ~90–110 cans/bottles</li>
-              <li>RGB LED base glow</li>
-              <li>Custom full-wrap graphics</li>
-            </ul>
+            <h3>36″ Signature Barrel</h3>
+            <p>Perfect for dairy aisles and yogurt promotions with vibrant LED glow and full-wrap branding.</p>
             <a href="#cta" class="btn btn-outline">Get Quote</a>
           </div>
         </div>
 
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1586528116022-7ea2d139ebb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="48-inch Tall LED Electric Cooler">
+          <img src="assets/sunrise-dairy-cooler.jpg" alt="Electric barrel cooler – Sunrise Dairy Fresh & Fruity">
           <div class="product-info">
-            <h3>48″ Tall Display</h3>
-            <p>Maximum visibility for high-traffic areas and events.</p>
-            <ul>
-              <li>Height: 48 inches</li>
-              <li>Capacity: ~150–190 cans/bottles</li>
-              <li>Animated / pulsing LED option</li>
-              <li>Heavy-duty commercial build</li>
-            </ul>
+            <h3>36″ Signature Barrel (Fruit Edition)</h3>
+            <p>Ideal for fresh fruit yogurt displays – eye-catching, clean, and brand-forward.</p>
             <a href="#cta" class="btn btn-outline">Get Quote</a>
           </div>
         </div>
@@ -397,11 +235,28 @@
     </div>
   </section>
 
-  <!-- Strong CTA -->
+  <!-- Gallery / In-Store Views -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title">In Real Grocery & Deli Settings</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/evergreen-farms-cooler.jpg" alt="Evergreen Farms Dairy Delights barrel cooler in store">
+          <p>Evergreen Farms – Artisanal Dairy Display</p>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/sunrise-dairy-cooler.jpg" alt="Sunrise Dairy fresh & fruity yogurt barrel cooler">
+          <p>Sunrise Dairy – Fresh & Fruity Promotion</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="cta" id="cta">
     <div class="container">
       <h2>Ready to Cool Smarter?</h2>
-      <p>Contact us today for pricing, customization, or to discuss your next promotion or retail rollout.</p>
+      <p>Contact us for pricing, customization, or to discuss your next retail or promotional rollout.</p>
       <a href="mailto:hello@electriccooler.co" class="btn btn-primary" style="font-size:1.4rem; margin-top:2rem;">
         hello@electriccooler.co
       </a>
