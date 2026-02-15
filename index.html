@@ -290,36 +290,43 @@
       }
     }
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-  <div class="container">
-    <h2>Real Store & Deli Placements</h2>
+    /* Gallery */
+    .gallery {
+      padding: 5rem 0;
+      background: #ffffff;
+    }
 
-    <div class="gallery-grid">
+    .gallery h2 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2.2rem;
+      color: var(--primary);
+    }
 
-      <div>
-        <img src="assets/images/Vibe_Brew_Barrel_1a.jpg" 
-             alt="Electric cooler in beverage aisle promotional zone">
-      </div>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+    }
 
-      <div>
-        <img src="assets/images/evergreen_farms_1a.jpg" 
-             alt="Electric cooler placed in dairy adjacency">
-      </div>
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
 
-      <div>
-        <img src="assets/images/sunrise_dairy_1a.jpg" 
-             alt="Electric cooler in grocery yogurt and dairy section">
-      </div>
+    /* CTA */
+    .contact {
+      padding: 6rem 0;
+      text-align: center;
+    }
 
-      <div>
-        <img src="assets/images/Fruvia_Cafe_2.png" 
-             alt="Electric cooler in café grab-and-go environment">
-      </div>
-
-    </div>
-  </div>
-</section>
+    .about-text {
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      color: rgba(34,34,59,0.85);
+    }
 
     /* Footer */
     footer {
@@ -401,68 +408,83 @@
     </div>
   </section>
 
-<!-- PRODUCTS (NEW) -->
-<section class="products" id="products">
-  <div class="container">
-    <h2>Our Electric Barrel Cooler</h2>
+  <!-- PRODUCTS (NEW) -->
+  <section class="products" id="products">
+    <div class="container">
+      <h2>Our Electric Barrel Cooler</h2>
 
-    <div style="
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    ">
+      <div style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      ">
 
-      <!-- LEFT: Cooler Image -->
-      <div>
-        <img 
-          src="assets/images/Fruvia_Cafe_1.png"
-          alt="Electric Barrel Cooler in café environment"
-          style="width:100%; border-radius:24px; box-shadow:0 18px 45px rgba(0,0,0,0.12);"
-        >
+        <!-- LEFT: Cooler Image -->
+        <div>
+          <img 
+            src="assets/images/Fruvia_Cafe_1.png"
+            alt="Electric Barrel Cooler in café environment"
+            style="width:100%; border-radius:24px; box-shadow:0 18px 45px rgba(0,0,0,0.12);"
+          >
+        </div>
+
+        <!-- RIGHT: Specs -->
+        <div>
+          <h3 style="font-size:1.8rem; margin-bottom:1rem; color:var(--primary);">
+            36″ Electric Barrel Cooler (EBC‑165‑LED)
+          </h3>
+
+          <p style="margin-bottom:1.5rem; color:rgba(34,34,59,0.85);">
+            A premium LED‑lit electric barrel cooler designed for cafés, delis, and grocery aisles. 
+            Ice‑free, brand‑forward, and engineered for reliable performance in high‑traffic retail environments.
+          </p>
+
+          <ul style="line-height:1.9; margin-bottom:2rem; color:rgba(34,34,59,0.85);">
+            <li><strong>Voltage:</strong> 110V/60Hz or 220V/50Hz</li>
+            <li><strong>Refrigerant:</strong> R600a</li>
+            <li><strong>Temperature Range:</strong> 32°F to 45°F</li>
+            <li><strong>Energy Use:</strong> 0.52 kWh / 24 hrs</li>
+            <li><strong>Noise Level:</strong> 46.3 dB</li>
+            <li><strong>External Diameter:</strong> 21.6 in</li>
+            <li><strong>Height:</strong> 37.8 in</li>
+            <li><strong>Net Weight:</strong> 33 kg</li>
+          </ul>
+
+          <a href="#cta" class="btn btn-primary">Request Pricing</a>
+        </div>
+
       </div>
-
-      <!-- RIGHT: Specs -->
-      <div>
-        <h3 style="font-size:1.8rem; margin-bottom:1rem; color:var(--primary);">
-          36″ Electric Barrel Cooler (EBC‑165‑LED)
-        </h3>
-
-        <p style="margin-bottom:1.5rem; color:rgba(34,34,59,0.85);">
-          A premium LED‑lit electric barrel cooler designed for cafés, delis, and grocery aisles. 
-          Ice‑free, brand‑forward, and engineered for reliable performance in high‑traffic retail environments.
-        </p>
-
-        <ul style="line-height:1.9; margin-bottom:2rem; color:rgba(34,34,59,0.85);">
-          <li><strong>Voltage:</strong> 110V/60Hz or 220V/50Hz</li>
-          <li><strong>Refrigerant:</strong> R600a</li>
-          <li><strong>Temperature Range:</strong> 32°F to 45°F</li>
-          <li><strong>Energy Use:</strong> 0.52 kWh / 24 hrs</li>
-          <li><strong>Noise Level:</strong> 46.3 dB</li>
-          <li><strong>External Diameter:</strong> 21.6 in</li>
-          <li><strong>Height:</strong> 37.8 in</li>
-          <li><strong>Net Weight:</strong> 33 kg</li>
-        </ul>
-
-        <a href="#cta" class="btn btn-primary">Request Pricing</a>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- GALLERY -->
+  <!-- GALLERY (NEW, CORRECTED) -->
   <section class="gallery" id="gallery">
     <div class="container">
       <h2>Real Store & Deli Placements</h2>
 
       <div class="gallery-grid">
+
         <div>
-          <img src="assets/evergreen-cooler.jpg" alt="Evergreen Farms cooler in dairy aisle">
+          <img src="assets/images/Vibe_Brew_Barrel_1a.jpg" 
+               alt="Electric cooler in beverage aisle promotional zone">
         </div>
+
         <div>
-          <img src="assets/sunrise-cooler.jpg" alt="Sunrise Dairy cooler in grocery setting">
+          <img src="assets/images/evergreen_farms_1a.jpg" 
+               alt="Electric cooler placed in dairy adjacency">
         </div>
+
+        <div>
+          <img src="assets/images/sunrise_dairy_1a.jpg" 
+               alt="Electric cooler in grocery yogurt and dairy section">
+        </div>
+
+        <div>
+          <img src="assets/images/Fruvia_Cafe_2.png" 
+               alt="Electric cooler in café grab-and-go environment">
+        </div>
+
       </div>
     </div>
   </section>
