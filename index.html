@@ -99,6 +99,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 2rem;
+      position: relative;
     }
 
     .logo {
@@ -128,6 +129,37 @@
     }
 
     nav a:hover { color: var(--accent); }
+
+    /* MOBILE NAV */
+    .mobile-menu-icon {
+      display: none;
+      font-size: 1.9rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        position: absolute;
+        right: 2rem;
+        top: 4.5rem;
+        width: 200px;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      .mobile-menu-icon {
+        display: block;
+      }
+    }
 
     /* HERO */
     .hero {
@@ -170,12 +202,105 @@
       border-radius: 28px;
       overflow: hidden;
       box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    /* Soft gradient overlay */
+    .hero-image-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.35)
+      );
+      pointer-events: none;
     }
 
     .hero-image {
       width: 100%;
       height: auto;
       display: block;
+      object-fit: cover;
+    }
+
+    /* MOBILE HERO FIXES */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3.5rem 0 4rem;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+      }
+
+      .lead {
+        font-size: 1rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .hero-image-wrapper {
+        margin-top: 1.8rem;
+        border-radius: 18px;
+      }
+
+      .hero-image {
+        height: 340px;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 3rem 0 3.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .lead {
+        font-size: 0.95rem;
+      }
+
+      .hero-image-wrapper {
+        border-radius: 14px;
+      }
+
+      .hero-image {
+        height: 280px;
+      }
+    }
+
+    /* Sticky CTA */
+    .mobile-sticky-cta {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-sticky-cta {
+        display: block;
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent);
+        color: #2b1030;
+        padding: 0.9rem 2rem;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 12px 30px rgba(255, 122, 196, 0.45);
+        z-index: 999;
+      }
     }
 
     /* Products */
@@ -302,70 +427,21 @@
       opacity: 0.7;
       font-size: 0.9rem;
     }
-
-    /* MOBILE HERO FIXES */
-@media (max-width: 768px) {
-
-  .hero {
-    padding: 3.5rem 0 4rem;
-  }
-
-  .hero h1 {
-    font-size: 2.4rem;
-    line-height: 1.2;
-  }
-
-  .lead {
-    font-size: 1rem;
-    margin-bottom: 1.8rem;
-  }
-
-  .hero-ctas {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .hero-image-wrapper {
-    margin-top: 1.8rem;
-    border-radius: 18px;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-  }
-}
-
-/* SUPER SMALL SCREENS (iPhone SE, older Android) */
-@media (max-width: 480px) {
-
-  .hero {
-    padding: 3rem 0 3.5rem;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .lead {
-    font-size: 0.95rem;
-  }
-
-  .hero-image-wrapper {
-    border-radius: 14px;
-  }
-}
   </style>
 </head>
 
 <body>
 
+  <!-- MOBILE STICKY CTA -->
+  <a href="#cta" class="mobile-sticky-cta">Get Quote</a>
+
   <!-- HEADER -->
   <header class="header">
     <div class="container">
       <div class="logo">The Electric Cooler Co.</div>
+
+      <div class="mobile-menu-icon" onclick="toggleMenu()">☰</div>
+
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
@@ -394,8 +470,6 @@
 
       <div class="hero-image-wrapper">
         <img src="assets/images/hero.png"
-
-
              alt="Cooler in grocery store" class="hero-image">
       </div>
 
@@ -470,6 +544,12 @@
       © 2026 The Electric Cooler Company • Nothing But Good.
     </p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector("nav ul").classList.toggle("open");
+    }
+  </script>
 
 </body>
 </html>
