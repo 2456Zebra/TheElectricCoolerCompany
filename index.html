@@ -527,6 +527,36 @@
       padding-bottom: 3.5rem !important;
     }
 
+    /* Desktop: 4-column gallery and consistent image sizing */
+@media (min-width: 1100px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.25rem !important;
+    align-items: start !important;
+  }
+
+  .gallery-grid img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 520px !important;     /* keeps images visually large on desktop */
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+  }
+
+  /* Optional: make the 4th image slightly taller/stand out (uncomment if desired)
+  .gallery-grid div:nth-child(4) img {
+    max-height: 600px !important;
+  }
+  */
+}
+
+/* Keep the responsive behavior for smaller screens */
+@media (max-width: 1099px) {
+  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; }
+  .gallery-grid img { max-height: 420px !important; }
+}
+
   </style>
 </head>
 
