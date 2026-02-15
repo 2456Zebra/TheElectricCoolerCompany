@@ -303,18 +303,6 @@
       color: var(--primary);
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-      gap: 2rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-    }
-
     /* CTA */
     .contact {
       padding: 6rem 0;
@@ -364,10 +352,6 @@
     html, body { overflow-x: hidden !important; -webkit-overflow-scrolling: touch !important; }
     * { min-width: 0 !important; box-sizing: border-box !important; }
 
-    /* Gallery / product images: center and clamp */
-    .gallery-grid, .product-grid { overflow: hidden !important; justify-items: center !important; gap: 10px !important; padding-inline: 0.25rem !important; }
-    .gallery-grid img, .product-card img, .product-image, .hero-image { display: block !important; margin: 0 auto !important; width: 100% !important; max-width: 100% !important; height: auto !important; object-fit: cover !important; }
-
     /* Section title / product title spacing */
     h2, .section-title, .our-title { display: block !important; font-weight: 700 !important; margin-bottom: 0.45rem !important; }
     h3, .product-title, .product-card h3 { display: block !important; margin-top: 0.25rem !important; margin-bottom: 0.6rem !important; }
@@ -386,7 +370,6 @@
 
     /* Small-screen tweaks */
     @media (max-width: 420px) {
-      .gallery-grid, .product-grid { gap: 8px !important; }
       .hero h1 { font-size: 1.9rem !important; }
       .hero-image { height: auto !important; }
       footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; }
@@ -446,29 +429,6 @@
       box-shadow: 0 18px 45px rgba(0,0,0,0.12) !important;
     }
 
-    /* 5 — gallery images: show full cooler and center subject */
-    .gallery-grid img {
-      width: 100% !important;
-      height: auto !important;
-      object-fit: cover !important;
-      object-position: center center !important;
-      display: block !important;
-      border-radius: 20px !important;
-    }
-
-    /* 6 — center the mobile sticky CTA horizontally and keep it above safe area */
-    .mobile-sticky-cta {
-      left: 50% !important;
-      right: auto !important;
-      transform: translateX(-50%) !important;
-      bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important;
-      z-index: 9999 !important;
-      box-shadow: 0 12px 30px rgba(255,122,196,0.45) !important;
-    }
-
-    /* extra footer padding so the CTA never overlaps content */
-    footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; }
-
     /* Final targeted fixes: Request button, gallery crop, email button */
     .products .container > div[style] > div:last-child {
       text-align: left !important;
@@ -483,12 +443,6 @@
       .products .container > div[style] { grid-template-columns: 1fr !important; }
       .products .container > div[style] > div:last-child { text-align: center !important; }
       .products .container > div[style] > div:last-child .btn-primary { margin-left: auto !important; margin-right: auto !important; }
-    }
-
-    .gallery-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-      gap: 1rem !important;
-      padding-inline: 0.5rem !important;
     }
 
     .container a[href^="mailto:"] {
@@ -527,92 +481,57 @@
       padding-bottom: 3.5rem !important;
     }
 
-    /* Desktop: 4-column gallery and consistent image sizing */
-@media (min-width: 1100px) {
-  .gallery-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 1.25rem !important;
-    align-items: start !important;
-  }
+    /* ===== Uniform gallery layout (single authoritative block) ===== */
 
-  .gallery-grid img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 520px !important;     /* keeps images visually large on desktop */
-    object-fit: cover !important;
-    object-position: center center !important;
-    display: block !important;
-  }
+    /* Base grid behavior and gap */
+    .gallery-grid {
+      display: grid !important;
+      gap: 1.25rem !important;
+      grid-auto-rows: 1fr !important;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+      padding-inline: 0.5rem !important;
+    }
 
-  /* Optional: make the 4th image slightly taller/stand out (uncomment if desired)
-  .gallery-grid div:nth-child(4) img {
-    max-height: 600px !important;
-  }
-  */
-}
+    /* Make each gallery cell a card so images can fill it */
+    .gallery-grid > div {
+      display: flex !important;
+      align-items: stretch !important;
+      overflow: hidden !important;
+      min-height: auto !important;
+    }
 
-/* Keep the responsive behavior for smaller screens */
-@media (max-width: 1099px) {
-  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; }
-  .gallery-grid img { max-height: 420px !important; }
-}
+    /* Images fill the card and use cover to keep subject centered */
+    .gallery-grid img {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: none !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      display: block !important;
+      border-radius: 20px !important;
+    }
 
-    /* Uniform gallery card heights so all images match visually */
-.gallery-grid > div {
-  display: flex !important;
-  align-items: stretch !important;
-  overflow: hidden !important;
-}
+    /* Desktop: force 4 equal columns and set a reasonable card height */
+    @media (min-width: 1100px) {
+      .gallery-grid { grid-template-columns: repeat(4, 1fr) !important; }
+      .gallery-grid > div { min-height: 420px !important; }
+    }
 
-.gallery-grid img {
-  width: 100% !important;
-  height: 100% !important;
-  max-height: none !important;
-  object-fit: cover !important;
-  object-position: center center !important;
-  display: block !important;
-}
+    /* Medium: 3 columns with slightly smaller cards */
+    @media (min-width: 700px) and (max-width: 1099px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      .gallery-grid > div { min-height: 380px !important; }
+    }
 
-/* Desktop: keep images large and consistent */
-@media (min-width: 1100px) {
-  .gallery-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 1.25rem !important; }
-  .gallery-grid > div { min-height: 480px !important; }   /* card height for desktop */
-}
+    /* Small screens: natural heights and stacked behavior */
+    @media (max-width: 699px) {
+      .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; }
+      .gallery-grid > div { min-height: auto !important; display: block !important; overflow: visible !important; }
+      .gallery-grid img { height: auto !important; }
+    }
 
-/* Medium screens: slightly smaller card height */
-@media (max-width: 1099px) and (min-width: 700px) {
-  .gallery-grid > div { min-height: 420px !important; }
-}
-
-/* Small screens: let images size naturally (keeps the mobile look you liked) */
-@media (max-width: 699px) {
-  .gallery-grid > div { min-height: auto !important; }
-  .gallery-grid img { height: auto !important; }
-}
-
-    /* Equalize gallery card heights and remove special 4th-image sizing */
-.gallery-grid > div { display:flex !important; align-items:stretch !important; overflow:hidden !important; grid-auto-rows: 1fr !important; }
-.gallery-grid img { width:100% !important; height:100% !important; object-fit:cover !important; object-position:center center !important; display:block !important; }
-
-/* Desktop: uniform card height for all images */
-@media (min-width:1100px) {
-  .gallery-grid { grid-template-columns: repeat(4, 1fr) !important; gap:1.25rem !important; }
-  .gallery-grid > div { min-height: 480px !important; } /* adjust this value if you want slightly taller/shorter cards */
-}
-
-/* Medium screens: slightly smaller uniform height */
-@media (min-width:700px) and (max-width:1099px) {
-  .gallery-grid > div { min-height: 420px !important; }
-}
-
-/* Small screens: let images size naturally (preserve mobile behavior) */
-@media (max-width:699px) {
-  .gallery-grid > div { min-height: auto !important; }
-  .gallery-grid img { height: auto !important; }
-}
-
-/* Remove any one-off rule that targets the 4th image (if present) */
-.gallery-grid div:nth-child(4) { grid-column: auto !important; min-height: inherit !important; }
+    /* Clear any one-off 4th-image rules that might remain */
+    .gallery-grid div:nth-child(4) { grid-column: auto !important; min-height: inherit !important; }
 
   </style>
 </head>
