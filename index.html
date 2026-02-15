@@ -391,6 +391,92 @@ footer { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)) !import
   .hero-image { height: auto !important; }
   footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; }
 }
+
+    /* ===== Targeted layout fixes (paste at end of <style>) ===== */
+
+/* 0 — safety: ensure overrides apply (only while testing) */
+.products .container > div[style] { box-sizing: border-box !important; }
+
+/* 1 — force product grid to behave and stack on small screens
+   - override the inline grid layout; on small screens stack image above specs */
+.products .container > div[style] {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2rem !important;
+  align-items: start !important;
+  padding-inline: 0.25rem !important;
+}
+@media (max-width: 820px) {
+  .products .container > div[style] {
+    grid-template-columns: 1fr !important;   /* stack vertically */
+  }
+  /* ensure image appears first when stacked */
+  .products .container > div[style] > div:first-child { order: 0 !important; }
+  .products .container > div[style] > div:last-child  { order: 1 !important; }
+}
+
+/* 2 — "Our Electric Barrel Cooler" visibility and alignment
+   - center the section title and tighten spacing so it reads as a heading */
+.products h2 {
+  text-align: center !important;
+  font-size: clamp(1.15rem, 3.2vw, 1.6rem) !important;
+  margin: 0 0 1rem 0 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* 3 — product name spacing (36" ...) — make it full width and not bunched */
+.products h3,
+.products .product-title {
+  text-align: center !important;
+  font-size: clamp(1.1rem, 3.6vw, 1.8rem) !important;
+  margin: 0.35rem 0 1rem 0 !important;
+  line-height: 1.15 !important;
+}
+
+/* 4 — image placement: ensure the left image sits above the specs on small screens
+   and is vertically aligned with the product block on larger screens */
+.products img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center center !important; /* center the cooler in the frame */
+  border-radius: 24px !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12) !important;
+}
+
+/* 5 — gallery images: show full cooler and center subject
+   - allow images to scale, center the subject, and avoid right-side crop */
+.gallery-grid img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  border-radius: 20px !important;
+}
+
+/* 6 — center the mobile sticky CTA horizontally and keep it above safe area */
+.mobile-sticky-cta {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important;
+  z-index: 9999 !important;
+  box-shadow: 0 12px 30px rgba(255,122,196,0.45) !important;
+}
+
+/* extra footer padding so the CTA never overlaps content */
+footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; }
+
+/* small-screen polish */
+@media (max-width: 420px) {
+  .products h2 { font-size: 1.05rem !important; }
+  .products h3 { font-size: 1.05rem !important; }
+  .gallery-grid { gap: 10px !important; padding-inline: 0.5rem !important; }
+}
   </style>
 </head>
 
