@@ -553,3 +553,6 @@ footer {
   .fixed-quote { right: 0.6rem; bottom: calc(env(safe-area-inset-bottom, 0px) + 0.9rem); }
   footer { padding-bottom: calc(4.2rem + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* TEST: temporary visual marker to confirm this file is loaded */
+body { outline: 6px solid lime !important; background-color: #fff !important; }
