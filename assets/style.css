@@ -430,3 +430,126 @@ a:focus, button:focus {
 
 /* Safety net for rogue elements */
 * { min-width: 0; }
+
+/* =========================
+   Mobile spacing & overflow fixes
+   Paste this at the end of style.css
+   ========================= */
+
+/* 1) Global horizontal overflow safety */
+html, body {
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure no element forces the page wider than the viewport */
+* { min-width: 0; }
+
+/* Replace any 100vw usage with 100% where needed (safety) */
+.full-viewport, .hero, .gallery, .products, .features {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 2) Gallery / lower images: center and clamp */
+.gallery-grid,
+.product-grid {
+  overflow: hidden;               /* prevents swipe/drag overflow */
+  justify-items: center;          /* center grid children */
+  align-items: start;
+  gap: 10px;
+  padding-inline: 0.25rem;        /* small inner padding so images don't touch edge */
+}
+
+.gallery-grid img,
+.product-card img,
+.product-image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* If you use a horizontal carousel, force no negative margins/transforms */
+.carousel, .carousel-track, .gallery-track {
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible;
+}
+
+/* 3) Section heading hierarchy and spacing
+   Makes "Our Electric Barrel Cooler" a clear section title above product name */
+.section-title, .our-title, .product-section-title {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+  color: var(--primary);
+  margin: 0 0 0.45rem 0;
+  text-align: left;
+  letter-spacing: -0.02em;
+}
+
+/* Product name (the larger line) gets clear spacing below the section title */
+.product-title, .product-card h3 {
+  display: block;
+  font-size: clamp(1.25rem, 4.2vw, 1.6rem);
+  margin-top: 0.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--primary);
+}
+
+/* If titles were overlapping, force block layout and clear floats */
+.section-title + .product-title,
+.our-title + .product-title {
+  clear: both;
+}
+
+/* 4) Prevent right-side extra room and force wrapping for long inline elements */
+.container, .hero-content, .footer-content, .product-card {
+  padding-inline: clamp(0.6rem, 4vw, 2rem);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Ensure no element uses 100vw which can cause horizontal scroll */
+[style*="100vw"], .uses-100vw {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Footer email wrapping safety */
+.footer-email, .footer-email a {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+/* 5) Floating "Get a Quote" button safe spacing so it never covers copyright */
+.fixed-quote, .floating-quote, .get-quote {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  z-index: 60;
+  transform: translateZ(0);
+}
+
+/* Make footer taller so fixed button never overlaps content */
+footer {
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* 6) Small-screen tweaks */
+@media (max-width: 420px) {
+  .gallery-grid, .product-grid { gap: 8px; }
+  .section-title { font-size: 1rem; }
+  .product-title { font-size: 1.15rem; }
+  .fixed-quote { right: 0.6rem; bottom: calc(env(safe-area-inset-bottom, 0px) + 0.9rem); }
+  footer { padding-bottom: calc(4.2rem + env(safe-area-inset-bottom, 0px)); }
+}
