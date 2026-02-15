@@ -206,16 +206,16 @@
     }
 
     /* Soft gradient overlay */
-    .hero-image-wrapper::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.15),
-        rgba(0,0,0,0.35)
-      );
-      pointer-events: none;
+.hero-image-wrapper::after {
+  content: none;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
     }
 
     .hero-image {
