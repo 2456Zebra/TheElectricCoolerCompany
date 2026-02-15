@@ -359,6 +359,38 @@
       opacity: 0.7;
       font-size: 0.9rem;
     }
+
+    /* === Mobile spacing & overflow overrides (paste at end of existing <style>) === */
+html, body { overflow-x: hidden !important; -webkit-overflow-scrolling: touch !important; }
+* { min-width: 0 !important; box-sizing: border-box !important; }
+
+/* Gallery / product images: center and clamp */
+.gallery-grid, .product-grid { overflow: hidden !important; justify-items: center !important; gap: 10px !important; padding-inline: 0.25rem !important; }
+.gallery-grid img, .product-card img, .product-image, .hero-image { display: block !important; margin: 0 auto !important; width: 100% !important; max-width: 100% !important; height: auto !important; object-fit: cover !important; }
+
+/* Section title / product title spacing */
+h2, .section-title, .our-title { display: block !important; font-weight: 700 !important; margin-bottom: 0.45rem !important; }
+h3, .product-title, .product-card h3 { display: block !important; margin-top: 0.25rem !important; margin-bottom: 0.6rem !important; }
+
+/* Prevent rogue 100vw or inline styles from causing horizontal scroll */
+[style*="100vw"], .uses-100vw { width: 100% !important; max-width: 100% !important; }
+
+/* Footer email wrapping safety */
+.footer-email, .footer-email a, footer a, .container a[href^="mailto:"] { max-width: 100% !important; word-break: break-word !important; overflow-wrap: anywhere !important; white-space: normal !important; }
+
+/* Floating mobile CTA safe spacing so it never overlaps footer */
+.mobile-sticky-cta, .fixed-quote, .floating-quote, .get-quote { z-index: 9999 !important; bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important; right: 1rem !important; left: auto !important; transform: none !important; }
+
+/* Give footer extra bottom padding so fixed CTA never covers content */
+footer { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)) !important; }
+
+/* Small-screen tweaks */
+@media (max-width: 420px) {
+  .gallery-grid, .product-grid { gap: 8px !important; }
+  .hero h1 { font-size: 1.9rem !important; }
+  .hero-image { height: auto !important; }
+  footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; }
+}
   </style>
 </head>
 
