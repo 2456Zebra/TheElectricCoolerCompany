@@ -303,6 +303,18 @@
       color: var(--primary);
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
     /* CTA */
     .contact {
       padding: 6rem 0;
@@ -352,6 +364,10 @@
     html, body { overflow-x: hidden !important; -webkit-overflow-scrolling: touch !important; }
     * { min-width: 0 !important; box-sizing: border-box !important; }
 
+    /* Gallery / product images: center and clamp */
+    .gallery-grid, .product-grid { overflow: hidden !important; justify-items: center !important; gap: 10px !important; padding-inline: 0.25rem !important; }
+    .gallery-grid img, .product-card img, .product-image, .hero-image { display: block !important; margin: 0 auto !important; width: 100% !important; max-width: 100% !important; height: auto !important; object-fit: cover !important; }
+
     /* Section title / product title spacing */
     h2, .section-title, .our-title { display: block !important; font-weight: 700 !important; margin-bottom: 0.45rem !important; }
     h3, .product-title, .product-card h3 { display: block !important; margin-top: 0.25rem !important; margin-bottom: 0.6rem !important; }
@@ -370,6 +386,7 @@
 
     /* Small-screen tweaks */
     @media (max-width: 420px) {
+      .gallery-grid, .product-grid { gap: 8px !important; }
       .hero h1 { font-size: 1.9rem !important; }
       .hero-image { height: auto !important; }
       footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; }
@@ -429,6 +446,29 @@
       box-shadow: 0 18px 45px rgba(0,0,0,0.12) !important;
     }
 
+    /* 5 — gallery images: show full cooler and center subject */
+    .gallery-grid img {
+      width: 100% !important;
+      height: auto !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      display: block !important;
+      border-radius: 20px !important;
+    }
+
+    /* 6 — center the mobile sticky CTA horizontally and keep it above safe area */
+    .mobile-sticky-cta {
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%) !important;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important;
+      z-index: 9999 !important;
+      box-shadow: 0 12px 30px rgba(255,122,196,0.45) !important;
+    }
+
+    /* extra footer padding so the CTA never overlaps content */
+    footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; }
+
     /* Final targeted fixes: Request button, gallery crop, email button */
     .products .container > div[style] > div:last-child {
       text-align: left !important;
@@ -443,6 +483,12 @@
       .products .container > div[style] { grid-template-columns: 1fr !important; }
       .products .container > div[style] > div:last-child { text-align: center !important; }
       .products .container > div[style] > div:last-child .btn-primary { margin-left: auto !important; margin-right: auto !important; }
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+      gap: 1rem !important;
+      padding-inline: 0.5rem !important;
     }
 
     .container a[href^="mailto:"] {
@@ -480,58 +526,6 @@
       padding-top: 5rem !important;
       padding-bottom: 3.5rem !important;
     }
-
-    /* ===== Uniform gallery layout (single authoritative block) ===== */
-
-    /* Base grid behavior and gap */
-    .gallery-grid {
-      display: grid !important;
-      gap: 1.25rem !important;
-      grid-auto-rows: 1fr !important;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-      padding-inline: 0.5rem !important;
-    }
-
-    /* Make each gallery cell a card so images can fill it */
-    .gallery-grid > div {
-      display: flex !important;
-      align-items: stretch !important;
-      overflow: hidden !important;
-      min-height: auto !important;
-    }
-
-    /* Images fill the card and use cover to keep subject centered */
-    .gallery-grid img {
-      width: 100% !important;
-      height: 100% !important;
-      max-height: none !important;
-      object-fit: cover !important;
-      object-position: center center !important;
-      display: block !important;
-      border-radius: 20px !important;
-    }
-
-    /* Desktop: force 4 equal columns and set a reasonable card height */
-    @media (min-width: 1100px) {
-      .gallery-grid { grid-template-columns: repeat(4, 1fr) !important; }
-      .gallery-grid > div { min-height: 420px !important; }
-    }
-
-    /* Medium: 3 columns with slightly smaller cards */
-    @media (min-width: 700px) and (max-width: 1099px) {
-      .gallery-grid { grid-template-columns: repeat(3, 1fr) !important; }
-      .gallery-grid > div { min-height: 380px !important; }
-    }
-
-    /* Small screens: natural heights and stacked behavior */
-    @media (max-width: 699px) {
-      .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; }
-      .gallery-grid > div { min-height: auto !important; display: block !important; overflow: visible !important; }
-      .gallery-grid img { height: auto !important; }
-    }
-
-    /* Clear any one-off 4th-image rules that might remain */
-    .gallery-grid div:nth-child(4) { grid-column: auto !important; min-height: inherit !important; }
 
   </style>
 </head>
@@ -596,7 +590,7 @@
 
         <!-- LEFT: Cooler Image -->
         <div>
-          <img 
+          <img
             src="assets/images/Fruvia_Cafe_1.png"
             alt="Electric Barrel Cooler in café environment"
             style="width:100%; border-radius:24px; box-shadow:0 18px 45px rgba(0,0,0,0.12);"
@@ -610,7 +604,7 @@
           </h3>
 
           <p style="margin-bottom:1.5rem; color:rgba(34,34,59,0.85);">
-            A premium LED‑lit electric barrel cooler designed for cafés, delis, and grocery aisles. 
+            A premium LED‑lit electric barrel cooler designed for cafés, delis, and grocery aisles.
             Ice‑free, brand‑forward, and engineered for reliable performance in high‑traffic retail environments.
           </p>
 
@@ -640,22 +634,22 @@
       <div class="gallery-grid">
 
         <div>
-          <img src="assets/images/Vibe_Brew_Barrel_1a.jpg" 
+          <img src="assets/images/Vibe_Brew_Barrel_1a.jpg"
                alt="Electric cooler in beverage aisle promotional zone">
         </div>
 
         <div>
-          <img src="assets/images/evergreen_farms_1a.jpg" 
+          <img src="assets/images/evergreen_farms_1a.jpg"
                alt="Electric cooler placed in dairy adjacency">
         </div>
 
         <div>
-          <img src="assets/images/sunrise_dairy_2a.png" 
+          <img src="assets/images/sunrise_dairy_2a.png"
                alt="Electric cooler in grocery yogurt and dairy section">
         </div>
 
         <div>
-          <img src="assets/images/Fruvia_Cafe_2.png" 
+          <img src="assets/images/Fruvia_Cafe_2.png"
                alt="Electric cooler in café grab-and-go environment">
         </div>
 
