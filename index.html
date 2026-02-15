@@ -543,6 +543,41 @@ footer { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !importan
 @media (max-width: 360px) {
   .container a[href^="mailto:"] { font-size: 0.92rem !important; padding: 0.5rem 0.9rem !important; }
 }
+
+    /* === Fruvia image sizing and Our Story spacing tweaks === */
+
+/* 1) Make the Fruvia cafe images match other gallery/product images
+   - Targets the product image in the products section and the 4th gallery image.
+   - Keeps the cooler centered, enforces a consistent max height, and avoids right-side crop. */
+.products img[src$="Fruvia_Cafe_1.png"],
+.gallery-grid div:nth-child(4) img[src$="Fruvia_Cafe_2.png"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 360px !important;      /* match other images' visual height */
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: 20px !important;
+}
+
+/* Slightly smaller max-height on very small phones so it never overflows */
+@media (max-width: 420px) {
+  .products img[src$="Fruvia_Cafe_1.png"],
+  .gallery-grid div:nth-child(4) img[src$="Fruvia_Cafe_2.png"] {
+    max-height: 300px !important;
+  }
+}
+
+/* 2) Reduce the vertical gap above the Our Story section
+   - Overrides the inline padding on the section to pull it up a bit. */
+.our-story {
+  padding-top: 2.5rem !important;    /* reduced from 5rem to tighten the gap */
+  padding-bottom: 3.5rem !important; /* keep bottom spacing comfortable */
+}
+
+/* If you prefer the image to be slightly taller, increase max-height to 400px */
   </style>
 </head>
 
