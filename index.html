@@ -557,6 +557,39 @@
   .gallery-grid img { max-height: 420px !important; }
 }
 
+    /* Uniform gallery card heights so all images match visually */
+.gallery-grid > div {
+  display: flex !important;
+  align-items: stretch !important;
+  overflow: hidden !important;
+}
+
+.gallery-grid img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* Desktop: keep images large and consistent */
+@media (min-width: 1100px) {
+  .gallery-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 1.25rem !important; }
+  .gallery-grid > div { min-height: 480px !important; }   /* card height for desktop */
+}
+
+/* Medium screens: slightly smaller card height */
+@media (max-width: 1099px) and (min-width: 700px) {
+  .gallery-grid > div { min-height: 420px !important; }
+}
+
+/* Small screens: let images size naturally (keeps the mobile look you liked) */
+@media (max-width: 699px) {
+  .gallery-grid > div { min-height: auto !important; }
+  .gallery-grid img { height: auto !important; }
+}
+
   </style>
 </head>
 
