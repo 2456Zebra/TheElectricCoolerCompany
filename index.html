@@ -302,6 +302,61 @@
       opacity: 0.7;
       font-size: 0.9rem;
     }
+
+    /* MOBILE HERO FIXES */
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .hero-image-wrapper {
+    margin-top: 1.8rem;
+    border-radius: 18px;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+/* SUPER SMALL SCREENS (iPhone SE, older Android) */
+@media (max-width: 480px) {
+
+  .hero {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 0.95rem;
+  }
+
+  .hero-image-wrapper {
+    border-radius: 14px;
+  }
+}
   </style>
 </head>
 
