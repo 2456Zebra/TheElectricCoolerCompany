@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Electric Cooler Company – Ice-Free. Brand-Forward. Always Cool.</title>
 
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/favicon2a.ico">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,6 +133,15 @@
 
     nav a:hover { color: var(--accent); }
 
+    /* Active nav link */
+    .nav-active {
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+      padding: .45rem .6rem;
+      border-radius: 8px;
+    }
+
     /* MOBILE NAV */
     .mobile-menu-icon {
       display: none;
@@ -149,7 +161,7 @@
         position: absolute;
         right: 2rem;
         top: 4.5rem;
-        width: 200px;
+        width: 220px;
       }
 
       nav ul.open {
@@ -543,10 +555,12 @@
       <div class="mobile-menu-icon" onclick="toggleMenu()">☰</div>
 
       <nav>
-        <ul>
+        <ul id="main-nav">
           <li><a href="#home">Home</a></li>
           <li><a href="#products">Products</a></li>
           <li><a href="#gallery">In Stores</a></li>
+          <!-- Added Our Story link -->
+          <li><a href="#story">Our Story</a></li>
           <li><a href="#cta" class="btn btn-outline">Get Quote</a></li>
         </ul>
       </nav>
@@ -735,9 +749,53 @@
 </footer>
 
   <script>
+    // Mobile menu toggle
     function toggleMenu() {
       document.querySelector("nav ul").classList.toggle("open");
     }
+
+    // Smooth scroll for same-page anchors and close mobile menu if open
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', href);
+        // close mobile menu if open
+        const nav = document.querySelector('nav ul');
+        if (nav && nav.classList.contains('open')) nav.classList.remove('open');
+      });
+    });
+
+    // IntersectionObserver to toggle active class on nav links
+    (function() {
+      const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+      const sections = Array.from(document.querySelectorAll('section[id], [id="home"]'));
+
+      if (!('IntersectionObserver' in window)) {
+        // fallback: highlight Home
+        const homeLink = document.querySelector('nav a[href="#home"]');
+        if (homeLink) homeLink.classList.add('nav-active');
+        return;
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.id;
+          const link = document.querySelector('nav a[href="#' + id + '"]');
+          if (!link) return;
+          if (entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('nav-active'));
+            link.classList.add('nav-active');
+          }
+        });
+      }, { root: null, threshold: 0.5 });
+
+      sections.forEach(s => observer.observe(s));
+    })();
   </script>
 
   <script src="https://www.w3counter.com/tracker.js?id=157202"></script>
